@@ -22,7 +22,7 @@ function App() {
 
     const fetchDrones = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:8000/drones/status');
+            const response = await axios.get('https://drones-management-server-5.onrender.com/drones/status');
             setDrones(response.data);
         } catch (error) {
             console.error('Failed to fetch drones:', error);
@@ -31,7 +31,7 @@ function App() {
 
     const fetchMissions = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:8000/missions/');
+            const response = await axios.get('https://drones-management-server-5.onrender.com/missions/');
             const filteredMissions = response.data.filter(mission => mission && mission._id && mission.name); // Ensure each mission has an ID and name
             setMissions(filteredMissions);
         } catch (error) {
@@ -58,7 +58,7 @@ function App() {
         e.preventDefault();
         // The post method uses the structure of schedule schema
         try {
-            await axios.post('http://127.0.0.1:8000/schedules/', {
+            await axios.post('https://drones-management-server-5.onrender.com/schedules/', {
                 drone: selectedDrone,
                 mission: selectedMission,
                 start: startDate,
